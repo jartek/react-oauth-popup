@@ -6,6 +6,8 @@ type props = {
   height: number,
   url: string,
   title: string,
+  className: string,
+  style: string,
   onClose: () => *,
   onCode: (code: string, params: *) => *,
   children?: React.Node,
@@ -17,7 +19,9 @@ export default class OauthPopup extends React.PureComponent<props> {
     width: 500,
     height: 500,
     url: "",
-    title: ""
+    title: "",
+    className: "",
+    style: ""
   };
 
   externalWindow: window;
@@ -76,6 +80,14 @@ export default class OauthPopup extends React.PureComponent<props> {
   }
 
   render() {
-    return <div onClick={this.createPopup}> {this.props.children} </div>;
+    return (
+      <div 
+        className={this.props.className}
+        style={this.props.style}
+        onClick={this.createPopup}
+      >
+        {this.props.children}
+      </div>
+     );
   }
 }
